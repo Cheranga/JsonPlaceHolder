@@ -5,6 +5,10 @@ VisualStudioVersion = 15.0.28307.271
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JsonPlaceHolder", "JsonPlaceHolder\JsonPlaceHolder.csproj", "{1DAEE7F4-CB78-4994-9678-A9B2BD639BDE}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{D38B1E85-D96B-4274-B94F-ACDE4A695AA6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JsonPlaceHolder.Integration.Tests", "JsonPlaceHolder.Integration.Tests\JsonPlaceHolder.Integration.Tests.csproj", "{ACBE0973-35AC-43B6-B25E-FF16D4813E8E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,9 +19,16 @@ Global
 		{1DAEE7F4-CB78-4994-9678-A9B2BD639BDE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1DAEE7F4-CB78-4994-9678-A9B2BD639BDE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1DAEE7F4-CB78-4994-9678-A9B2BD639BDE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ACBE0973-35AC-43B6-B25E-FF16D4813E8E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ACBE0973-35AC-43B6-B25E-FF16D4813E8E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ACBE0973-35AC-43B6-B25E-FF16D4813E8E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ACBE0973-35AC-43B6-B25E-FF16D4813E8E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{ACBE0973-35AC-43B6-B25E-FF16D4813E8E} = {D38B1E85-D96B-4274-B94F-ACDE4A695AA6}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {1A65BA6F-87AE-48DC-9814-2DA4B92A5A6C}
