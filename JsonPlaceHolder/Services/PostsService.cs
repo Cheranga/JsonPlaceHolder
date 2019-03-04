@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading.Tasks;
 using JsonPlaceHolder.DTO.Assets;
+using JsonPlaceHolder.DTO.Requests;
 using JsonPlaceHolder.DTO.Responses;
 using JsonPlaceHolder.Services.Configs;
 using Microsoft.Extensions.Logging;
@@ -38,6 +39,29 @@ namespace JsonPlaceHolder.Services
             _logger.LogInformation("Posts received.");
             var posts = JsonConvert.DeserializeObject<List<Post>>(await httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false));
             return new GetAllPostsResponse { Posts = posts };
+        }
+
+        public async Task<GetPostResponse> GetPostAsync(GetPostRequest request)
+        {
+            _logger.LogInformation($"Get post for {request.PostId}");
+
+            var httpRequest = new HttpRequestMessage(HttpMethod.Get, $"/posts/{request.PostId}");
+            var httpResponse = await _httpClient.SendAsync(httpRequest).ConfigureAwait(false);
+
+            if (!httpResponse.IsSuccessStatusCode)
+            {
+                _logger.LogError($"Cannot get the post :{request.PostId}");
+                throw new Exception(httpResponse.ReasonPhrase);
+            }
+
+            _logger.LogInformation("Retrieved the post");
+            var post = JsonConvert.DeserializeObject<Post>(await httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false));
+
+            return new GetPostResponse
+            {
+                Post = post
+            };
+
         }
     }
 }

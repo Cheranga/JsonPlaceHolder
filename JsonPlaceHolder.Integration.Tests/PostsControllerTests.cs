@@ -31,5 +31,27 @@ namespace JsonPlaceHolder.Integration.Tests
 
             Assert.Equal(true, response?.IsValid());
         }
+
+        [Theory]
+        [InlineData(1)]
+        [InlineData(2)]
+        [InlineData(3)]
+        [InlineData(4)]
+        [InlineData(5)]
+        public async Task Existing_Posts_Must_Be_Accessible_By_PostId(int postId)
+        {
+            //
+            // Arrange and act
+            //
+            var httpResponse = await _httpClient.GetAsync($@"/api/posts/{postId}").ConfigureAwait(false);
+            //
+            // Assert
+            //
+            httpResponse.EnsureSuccessStatusCode();
+            var response = JsonConvert.DeserializeObject<GetPostResponse>(await httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false));
+
+            Assert.NotNull(response);
+            Assert.Equal(postId, response.Post.Id);
+        }
     }
 }
